@@ -27,7 +27,9 @@ public:
 	void AimTowardsCrossHair();
 	bool GetSightRayHitLocation(FVector& OutHitLocation) const;
 	bool GetLookDirection(FVector2D ScreenLocation, FVector& OutLookDirection) const;
+	bool GetVectorHitLocation(FVector LookDirection, FVector& OutHitLocation) const;
 
 	UPROPERTY(EditAnywhere) float CrossHairXLoaction = 0.5;
 	UPROPERTY(EditAnywhere) float CrossHairYLoaction = 0.25;
+	UPROPERTY(EditAnywhere) float Reach = 1000000.f;
 };
