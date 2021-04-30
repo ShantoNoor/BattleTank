@@ -10,8 +10,38 @@ void ATankPlayerController::BeginPlay()
 	if (Tank) UE_LOG(LogTemp, Warning, TEXT("Player Tank : %s"), *Tank->GetName());
 }
 
+void ATankPlayerController::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	AimTowardsCrossHair();
+}
 
 ATank* ATankPlayerController::GetControlledTank() const
 {
 	return Cast<ATank>(GetPawn());
+}
+
+void ATankPlayerController::AimTowardsCrossHair()
+{
+	if (!GetControlledTank()) { return; }
+
+	FVector HitLocation;
+	if (GetSightRayHitLocation(HitLocation))
+	{
+		// UE_LOG(LogTemp, Warning, TEXT("HitLocation: %s"), *HitLocation.ToString());
+		// TODO GetTank aim this point
+
+	}
+}
+
+bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) const
+{
+	int32 ViewportSizeX, ViewportSizeY;
+	GetViewportSize(ViewportSizeX, ViewportSizeY);
+
+	FVector2D ScreenLocation = FVector2D(ViewportSizeX * CrossHairXLoaction, ViewportSizeY * CrossHairYLoaction);
+	UE_LOG(LogTemp, Warning, TEXT("CrossHairLocation: %s"), *ScreenLocation.ToString());
+
+	return true;
 }

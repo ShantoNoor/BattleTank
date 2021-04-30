@@ -20,5 +20,13 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
 	ATank* GetControlledTank() const;
+	void AimTowardsCrossHair();
+	bool GetSightRayHitLocation(FVector& OutHitLocation) const;
+
+	UPROPERTY(EditAnywhere) float CrossHairXLoaction = 0.5;
+	UPROPERTY(EditAnywhere) float CrossHairYLoaction = 0.25;
 };
