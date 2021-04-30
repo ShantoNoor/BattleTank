@@ -39,9 +39,25 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) cons
 {
 	int32 ViewportSizeX, ViewportSizeY;
 	GetViewportSize(ViewportSizeX, ViewportSizeY);
-
 	FVector2D ScreenLocation = FVector2D(ViewportSizeX * CrossHairXLoaction, ViewportSizeY * CrossHairYLoaction);
-	UE_LOG(LogTemp, Warning, TEXT("CrossHairLocation: %s"), *ScreenLocation.ToString());
+	// UE_LOG(LogTemp, Warning, TEXT("CrossHairLocation: %s"), *ScreenLocation.ToString());
 
+	FVector LookDirection;
+	if (GetLookDirection(ScreenLocation, LookDirection))
+	{
+		UE_LOG(LogTemp, Warning, TEXT("WorldDirection: %s"), *LookDirection.ToString());
+	}
+	
 	return true;
+}
+
+bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector& OutLookDirection) const
+{
+	FVector CameraWorldLocation;
+	return DeprojectScreenPositionToWorld(
+		ScreenLocation.X,
+		ScreenLocation.Y,
+		CameraWorldLocation,
+		OutLookDirection
+	);
 }

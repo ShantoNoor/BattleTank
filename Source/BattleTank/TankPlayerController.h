@@ -26,6 +26,7 @@ public:
 	ATank* GetControlledTank() const;
 	void AimTowardsCrossHair();
 	bool GetSightRayHitLocation(FVector& OutHitLocation) const;
+	bool GetLookDirection(FVector2D ScreenLocation, FVector& OutLookDirection) const;
 
 	UPROPERTY(EditAnywhere) float CrossHairXLoaction = 0.5;
 	UPROPERTY(EditAnywhere) float CrossHairYLoaction = 0.25;
