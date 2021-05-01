@@ -1,9 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
+#include "TankPlayerController.h"
 #include "Camera/PlayerCameraManager.h"
 #include "Engine/World.h"
-#include "TankPlayerController.h"
 
 void ATankPlayerController::BeginPlay()
 {
@@ -26,14 +26,15 @@ ATank* ATankPlayerController::GetControlledTank() const
 
 void ATankPlayerController::AimTowardsCrossHair()
 {
-	if (!GetControlledTank()) { return; }
+	ATank* ControlledTank = GetControlledTank();
+	if (!ControlledTank) { return; }
 
 	FVector HitLocation;
 	if (GetSightRayHitLocation(HitLocation))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("HitLocation: %s"), *HitLocation.ToString());
+		// UE_LOG(LogTemp, Warning, TEXT("HitLocation: %s"), *HitLocation.ToString());
 		// TODO GetTank aim this point
-
+		ControlledTank->AimAt(HitLocation);
 	}
 }
 
