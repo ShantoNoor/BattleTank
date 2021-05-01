@@ -17,6 +17,7 @@ public:
 	UTankAimingComponent();
 	void AimAt(FVector HitLocation, float LaunchSpeed);
 	void SetBarrelRef(UStaticMeshComponent* BarreToSet);
+	void MoveBarrelTowards(FVector AimDirection);
 
 protected:
 	// Called when the game starts
