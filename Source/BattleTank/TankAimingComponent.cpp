@@ -57,9 +57,12 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 		HitLocation,
 		LaunchSpeed,
 		false,
-		0,
-		0,
-		ESuggestProjVelocityTraceOption::DoNotTrace
+		0.f,
+		0.f,
+		ESuggestProjVelocityTraceOption::DoNotTrace,
+		FCollisionResponseParams::DefaultResponseParam,
+		TArray<AActor*>(),
+		false
 	);
 
 	if (bHaveAimSolution)
