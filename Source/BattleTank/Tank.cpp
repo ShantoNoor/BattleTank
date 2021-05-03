@@ -5,6 +5,7 @@
 #include "TankBarrel.h"
 #include "TankTurret.h"
 #include "TankAimingComponent.h"
+#include "TankMovementComponent.h"
 #include "Engine/World.h"
 #include "Projectile.h"
 
@@ -15,6 +16,7 @@ ATank::ATank()
 	PrimaryActorTick.bCanEverTick = true;
 
 	TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName(TEXT("Aiming Component")));
+	
 
 }
 
