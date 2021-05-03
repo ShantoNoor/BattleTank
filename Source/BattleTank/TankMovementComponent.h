@@ -20,6 +20,9 @@ public:
 	void IntendMoveForward(float Throw);
 
 	UFUNCTION(BlueprintCallable, Category = Setup)
+	void IntendTurnRight(float Throw);
+
+	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetTracks(UTankTruck* LeftTruckToSet, UTankTruck* RightTruckToSet);
 
 private:
