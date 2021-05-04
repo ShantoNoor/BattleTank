@@ -74,6 +74,6 @@ void ATank::Fire()
 		LastFireTime = GetWorld()->TimeSeconds;
 	}
 	else {
-		UE_LOG(LogTemp, Warning, TEXT("Reloading"));
+		// UE_LOG(LogTemp, Warning, TEXT("Reloading"));
 	}
 }

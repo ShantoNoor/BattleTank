@@ -6,7 +6,7 @@
 void UTankTruck::SetThrottle(float Throttle)
 {
 	auto name = GetName();
-	UE_LOG(LogTemp, Warning, TEXT("%s : Throttle -> %f"), *name, Throttle);
+	// UE_LOG(LogTemp, Warning, TEXT("%s : Throttle -> %f"), *name, Throttle);
 
 	auto AppliedForce = Throttle * GetForwardVector() * MaxDrivingForce;
 	auto ForceLocation = GetComponentLocation();

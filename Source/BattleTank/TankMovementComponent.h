@@ -25,6 +25,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetTracks(UTankTruck* LeftTruckToSet, UTankTruck* RightTruckToSet);
 
+	virtual void RequestDirectMove(const FVector& MoveVelocity, bool bForceMaxSpeed) override;
+
 private:
 	UTankTruck* LeftTruck = nullptr;
 	UTankTruck* RightTruck = nullptr;
