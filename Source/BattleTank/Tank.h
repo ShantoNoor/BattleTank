@@ -31,12 +31,6 @@ public:
 	UTankMovementComponent* TankMovementComponent = nullptr;
 
 	UFUNCTION(BlueprintCallable, Category = Setup)
-	void SetBarrelRef(UTankBarrel* BarreToSet);
-
-	UFUNCTION(BlueprintCallable, Category = Setup)
-	void SetTurretRef(UTankTurret* TurretToSet);
-
-	UFUNCTION(BlueprintCallable, Category = Setup)
 	void Fire();
 
 protected:
