@@ -5,12 +5,17 @@
 #include "Camera/PlayerCameraManager.h"
 #include "Engine/World.h"
 #include "Tank.h"
+#include "TankAimingComponent.h"
 
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 	ATank* Tank = GetControlledTank();
-	if (Tank) UE_LOG(LogTemp, Warning, TEXT("Player Tank : %s"), *Tank->GetName());
+	// if (Tank) UE_LOG(LogTemp, Warning, TEXT("Player Tank : %s"), *Tank->GetName());
+
+	auto AimingComponent = Tank->FindComponentByClass<UTankAimingComponent>();
+	if(AimingComponent) FoundAimingComponent(AimingComponent);
+	else UE_LOG(LogTemp, Warning, TEXT("Unable to find Aiming Component : %s"), *Tank->GetName());
 }
 
 void ATankPlayerController::Tick(float DeltaTime)
