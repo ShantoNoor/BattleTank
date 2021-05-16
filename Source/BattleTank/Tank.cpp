@@ -4,7 +4,6 @@
 #include "Tank.h"
 #include "TankBarrel.h"
 #include "TankTurret.h"
-#include "TankAimingComponent.h"
 #include "Engine/World.h"
 #include "Projectile.h"
 
@@ -23,8 +22,6 @@ ATank::ATank()
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
-	TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
-	Barrel = TankAimingComponent->Barrel;
 }
 
 // Called every frame
@@ -39,11 +36,6 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	
-}
-
-void ATank::AimAt(FVector HitLocation)
-{
-	if(ensure(TankAimingComponent)) TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
 }
 
 void ATank::Fire()
@@ -62,8 +54,5 @@ void ATank::Fire()
 
 		Projectile->LaunchProjectile(LaunchSpeed);
 		LastFireTime = GetWorld()->TimeSeconds;
-	}
-	else {
-		// UE_LOG(LogTemp, Warning, TEXT("Reloading"));
 	}
 }
