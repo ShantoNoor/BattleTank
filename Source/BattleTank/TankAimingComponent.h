@@ -27,7 +27,7 @@ public:
 	// Sets default values for this component's properties
 	UTankAimingComponent();
 	void AimAt(FVector HitLocation);
-	void MoveBarrelTowards(FVector AimDirection);
+	void MoveBarrelTowards();
 
 protected:
 	// Called when the game starts
@@ -59,4 +59,8 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void Fire();
+
+	bool IsBarrelMoving();
+
+	FVector AimDirection;
 };
