@@ -26,9 +26,6 @@ public:
 	UPROPERTY(BlueprintReadOnly)
 	UTankAimingComponent* TankAimingComponent = nullptr;
 
-	// UPROPERTY(BlueprintReadOnly)
-	// UTankMovementComponent* TankMovementComponent = nullptr;
-
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void Fire();
 

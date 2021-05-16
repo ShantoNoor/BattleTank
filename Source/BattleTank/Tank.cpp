@@ -23,7 +23,8 @@ ATank::ATank()
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
+	Barrel = TankAimingComponent->Barrel;
 }
 
 // Called every frame
@@ -37,7 +38,7 @@ void ATank::Tick(float DeltaTime)
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
+	
 }
 
 void ATank::AimAt(FVector HitLocation)
@@ -47,8 +48,9 @@ void ATank::AimAt(FVector HitLocation)
 
 void ATank::Fire()
 {
+	if (!ensure(Barrel)) { return; }
 	bool isReloaded = (GetWorld()->TimeSeconds - LastFireTime) > ReloadTime;
-	if (Barrel && isReloaded)
+	if (isReloaded)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Firing"));
 
